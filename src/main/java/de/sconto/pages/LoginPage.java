@@ -2,14 +2,18 @@ package de.sconto.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import de.sconto.utils.PropertiesLoader;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
 
-    public LoginPage enterData(String email, String password) {
-        $("#loginEmail").shouldBe(Condition.visible).val(email);
-        $("#loginPassword").val(password);
+    public static final String validEmail = PropertiesLoader.loadProperty("valid.email");
+    public static final String validPassword = PropertiesLoader.loadProperty("valid.password");
+
+    public LoginPage enterData() {
+        $("#loginEmail").shouldBe(Condition.visible).val(validEmail);
+        $("#loginPassword").val(validPassword);
         return Selenide.page(this);
     }
 
