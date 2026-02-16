@@ -18,8 +18,7 @@ public class HomePage {
         return Selenide.page(LoginPage.class);
     }
 
-    @FindBy(css = "[data-accept-action='all']")
-    WebElement acceptAll;
+    private SelenideElement acceptAll = $("[data-accept-action='all']");
 
     public HomePage acceptCookies() {
         if ($(acceptAll).exists()){
